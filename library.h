@@ -533,3 +533,4 @@ int posizioneMaggiore(float v[], int n)
 	return  presente(v,n,maggiore(v,n));
 }
 
+
