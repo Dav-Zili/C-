@@ -13,12 +13,14 @@ void stampaMenu()
 	cout << "4. Stampa l'elemento massimo " << endl;
 	cout << "5. Stampa quante volte e' presente il numero minore nella lista " << endl;
 	cout << "6. Mostrare gli elementi di indice pari " << endl;
+	cout << "7. Mostrare gli elementi se sono pari o dispari" << endl;
 	cout << " " << endl;
 
 }
 void menu(int v[] , int n)
 {
 	int scelta;
+	int contatore = 0;
 	do
 	{
 		stampaMenu();
@@ -46,7 +48,7 @@ void menu(int v[] , int n)
 				cout << "Il numero massimo della lista -->  " << maggiore(v,n) << endl;
 				break;
 			case 5:
-				int contatore = 0;
+				contatore = 0;
 				for(int i = 0; i<n;i++)
 				{
 					if(v[i] == minore(v,n))
@@ -54,15 +56,24 @@ void menu(int v[] , int n)
 						contatore += 1;
 					}
 				}
-				cout << "Il numero minore della lista e' stato trovato " << contatore << " volte " << endl;
+				cout << "Il numero minore della lista , cioe' "  << minore(v,n) << " e' stato trovato " << contatore << " volte " << endl;
 				break;
 			case 6:
-				for(int i = 0 ; i <n ;i++)
+				for(int i = 0; i < n ; i++)
 				{
-					if()
+					if(i%2==0)
+					{
+						cout << v[i] << endl;
+					}
 				}
-			
-			
+				break;
+			case 7:
+				pd(v,n);
+				break;
+			default:
+				cout << "Opzione inesistente , riprovare " << endl;
+				break;
+	
 		}
 	}while(scelta != 1);
 }
