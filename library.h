@@ -7,7 +7,8 @@ int random_max = 100;
 int dim_max = 1000;
 
 using namespace std;
-
+//funzioni aggiuntive
+void pd(int v[], int n);
 //funzioni
 
 //gestione random
@@ -126,41 +127,33 @@ void riempiVettoreRandom(int v[], int n)
 		v[i] = randomNM(random_min , random_max);
 	}
 }
-void riempiVettoreRandom(float v[] , int n)
+void riempiVettoreRandom(float v[] , int n )
 {
 	for(int i = 0; i < n ; i++)
 	{
 		v[i] = randomNM_float(random_min , random_max);
 	}
 }
-bool aggiungiElemento(int v[], int n)
+bool aggiungiElemento(int v[], int n , int x)
 {
-	int numero ;
 	if(n>=dim_max)
 	{
 		return false;
 	}
 	else
 	{
-		cout << "Che numero devo aggiungere alla lista?" << endl;
-		cin >> numero;
-		v[n] = numero;
-		
-		
+		v[n] = x;	
 	}
 }
-bool aggiungiElemento(float v[], int n)
+bool aggiungiElemento(float v[], int n , float x)
 {
-	float numero ;
 	if(n>=dim_max)
 	{
 		return false;
 	}
 	else
 	{
-		cout << "Che numero devo aggiungere alla lista?" << endl;
-		cin >> numero;
-		v[n] = numero;
+		v[n] = x;
 	}
 }
 bool rimuoviElemento(int v[], int n, int pos)
@@ -532,5 +525,18 @@ int posizioneMaggiore(float v[], int n)
 {
 	return  presente(v,n,maggiore(v,n));
 }
-
+void pd(int v[] , int n)
+{
+	for(int i = 0 ; i < n ; i++)
+	{
+		if(v[i]%2==0)
+		{
+			cout << v[i] << "-->" << " e' pari" << endl;
+		}
+		else
+		{
+				cout << v[i] << "-->" << " e' dispari" << endl;
+		}
+	}
+}
 
