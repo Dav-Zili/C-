@@ -26,10 +26,10 @@ void riempiVettore(int v[], int n);
 void riempiVettore(float v[], int n);
 void riempiVettoreRandom(int v[], int n);
 void riempiVettoreRandom(float v[], int n);
-bool aggiungiElemento(int v[], int n);
-bool aggiungiElemento(float v[], int n);
-bool rimuoviElemento(int v[], int n, int pos);
-bool rimuoviElemento(float v[], int n, int pos);
+bool aggiungiElemento(int v[], int &n,int x);
+bool aggiungiElemento(float v[], int &n , float x);
+bool rimuoviElemento(int v[], int &n, int pos);
+bool rimuoviElemento(float v[], int &n, int pos);
 
 //stampa vettore
 void stampaVettore(int v[], int n);
@@ -134,18 +134,7 @@ void riempiVettoreRandom(float v[] , int n )
 		v[i] = randomNM_float(random_min , random_max);
 	}
 }
-bool aggiungiElemento(int v[], int n , int x)
-{
-	if(n>=dim_max)
-	{
-		return false;
-	}
-	else
-	{
-		v[n] = x;	
-	}
-}
-bool aggiungiElemento(float v[], int n , float x)
+bool aggiungiElemento(int v[], int &n , int x)
 {
 	if(n>=dim_max)
 	{
@@ -154,9 +143,24 @@ bool aggiungiElemento(float v[], int n , float x)
 	else
 	{
 		v[n] = x;
+		n++;
+		return true;	
 	}
 }
-bool rimuoviElemento(int v[], int n, int pos)
+bool aggiungiElemento(float v[], int &n , float x)
+{
+	if(n>=dim_max)
+	{
+		return false;
+	}
+	else
+	{
+		v[n] = x;
+		n++;
+		return true;
+	}
+}
+bool rimuoviElemento(int v[], int &n, int pos)
 {
 	if(pos > n || n>dim_max || pos > dim_max)
 	{
@@ -164,16 +168,15 @@ bool rimuoviElemento(int v[], int n, int pos)
 	}
 	else
 	{
-		for(int i = 0; i < n-1 ; i++)
+		for(int i = pos-1; i < n-1 ; i++)
 		{
-			if(i+1==pos)
-			{
 				v[i] = v[i+1];
-			}
 		}
+		n--;
+		return true;
 	}
 }
-bool rimuoviElemento(float v[], int n, int pos)
+bool rimuoviElemento(float v[], int &n, int pos)
 {
 	if(pos > n || n > dim_max || pos > dim_max)
 	{
@@ -181,13 +184,12 @@ bool rimuoviElemento(float v[], int n, int pos)
 	}
 	else
 	{
-		for(int i = 0; i < n-1 ; i++)
+		for(int i = pos-1; i < n-1 ; i++)
 		{
-			if(i+1==pos)
-			{
 				v[i] = v[i+1];
-			}
 		}
+		n++;
+		return true;
 	}
 }
 //Stampa vettore
